@@ -17,7 +17,7 @@ export const AddContact = (props: any) => {
   const { contactInfo } = props;
   const navigate = useNavigate();
   const types = {
-    defaultValue: "personal",
+    defaultValue:type || "personal" ,
     options: [
       {
         label: "Personal",
@@ -30,12 +30,12 @@ export const AddContact = (props: any) => {
     ],
   };
   console.log(contactInfo, "contact info");
-  const [slectedType, setSelectedType] = useState('office');
+  const [slectedType, setSelectedType] = useState(types.options[0].value);
   console.log(slectedType, "slectedTypemfsfkjdsfsfskjfdskjnfdskjnfjn");
   const [addContact, setAddContact] = useState({
     id: id || props.count,
     name: name || "",
-    number: number || "",
+    number: number || types.options[0].value,
     type: type || slectedType,
     isWhatsapp: isWhatsapp == "true" ? true : false,
     profilePicture: "",
@@ -82,6 +82,7 @@ export const AddContact = (props: any) => {
   useEffect(() => {
     localStorage.setItem("contact", JSON.stringify(contacts ? contacts : []));
   }, [contacts]);
+
   useEffect(() => {
     setAddContact({ ...addContact, type: slectedType })
   }, [slectedType]);
