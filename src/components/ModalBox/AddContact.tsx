@@ -35,8 +35,8 @@ export const AddContact = (props: any) => {
   const [addContact, setAddContact] = useState({
     id: id || props.count,
     name: name || "",
-    number: number || types.options[0].value,
-    type: type || slectedType,
+    number: number || '',
+    type: type || types.options[0].value,
     isWhatsapp: isWhatsapp == "true" ? true : false,
     profilePicture: "",
   });
